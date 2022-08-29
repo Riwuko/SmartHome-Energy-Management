@@ -206,11 +206,7 @@ class ChargeStateRaportView(generics.ListCreateAPIView):
 
     def get_queryset(self):
         queryset = self.queryset
-        device_queryset = queryset.filter(device__pk=self.kwargs["pk"])
-        start_date = self.request.query_params.get("start_date") 
-        end_date = self.request.query_params.get("end_date")
-        if start_date and end_date:
-            device_queryset = device_queryset.filter(date__range=[start_date, end_date])
+        device_queryset = [queryset.filter(device__pk=self.kwargs["pk"]).latest("date")]
         return device_queryset
     
     # @transaction.atomic

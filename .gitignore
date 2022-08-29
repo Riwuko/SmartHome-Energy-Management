@@ -11,7 +11,7 @@ media
 *$py.class 
 
 # Environments 
-.env 
+.env
 
 # Visual Studio Code # 
 .vscode/* 
