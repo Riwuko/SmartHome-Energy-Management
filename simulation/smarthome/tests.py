@@ -139,7 +139,7 @@ class TestEnergy:
             url = reverse_lazy('smarthome:energy', kwargs={'pk': 0}) #pk can by anything, the building is already mocked
             response = self.client.get(url, data={"start_date": hour_08_00, "end_date": hour_12_30})
             building_devices = response.data.get("building_devices", [])
-            print(building_devices)
+   
             energy = round(building_devices[0].get("energy"), 6)
             assert energy == 0.428609 # 0.1025525 + 0.21717 + 0.061833125 + 0.0470535 = 0.428609125
 
